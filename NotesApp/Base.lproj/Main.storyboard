@@ -46,6 +46,9 @@
                                     <segment title="Title"/>
                                 </segments>
                                 <color key="tintColor" red="0.72340381149999999" green="0.1462985842" blue="0.13690983400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="qmk-is-OM8"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yoy-o0-Q9v">
                                 <rect key="frame" x="16" y="104" width="343" height="555"/>
@@ -139,9 +142,15 @@
                                     <navigationItem title="Details" id="k2G-Mu-k4m">
                                         <barButtonItem key="leftBarButtonItem" systemItem="save" id="706-ln-QWg">
                                             <color key="tintColor" red="0.72340381149999999" green="0.1462985842" blue="0.13690983400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <connections>
+                                                <action selector="saveButtonPressed:" destination="rCN-ou-xMa" id="XMZ-oN-9eV"/>
+                                            </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="Zib-XZ-tPL">
                                             <color key="tintColor" red="0.72340381149999999" green="0.1462985842" blue="0.13690983400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <connections>
+                                                <action selector="deleteButtonPressed:" destination="rCN-ou-xMa" id="qmu-3B-nlO"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -173,6 +182,10 @@
                             <constraint firstItem="dsG-dM-m1i" firstAttribute="leading" secondItem="1Oy-z4-Smv" secondAttribute="leadingMargin" id="yMX-Lt-3UT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="detailsTextView" destination="XQi-3p-D7m" id="gZy-1J-xUA"/>
+                        <outlet property="titleTextField" destination="dsG-dM-m1i" id="EjR-oi-A6I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DJG-Xi-pso" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -180,6 +193,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Xym-5n-iCx"/>
+        <segue reference="aku-EP-ZhM"/>
     </inferredMetricsTieBreakers>
 </document>

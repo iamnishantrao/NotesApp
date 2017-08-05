@@ -22,11 +22,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.delegate = self
         tableView.dataSource = self
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        generateTestData()
+        attemptFetch()
     }
     
     // Table View Functions.
@@ -130,14 +128,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
     }
-
-    // Function for Segments.
-    @IBAction func segmentChanged(_ sender: Any) {
-        
-        attemptFetch()
-        tableView.reloadData()
-        
-    }
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
@@ -183,27 +173,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    
+    // Function for Segments.
+    @IBAction func segmentChanged(_ sender: Any) {
+        
+        attemptFetch()
+        tableView.reloadData()
+    }
+
+    func generateTestData() {
+        
+        let note = Note(context: context)
+        note.title = "Hello World"
+        note.details = "First Note."
+        
+        appDelegate.saveContext()
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

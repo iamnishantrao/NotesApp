@@ -7,31 +7,76 @@
 //
 
 import UIKit
+import CoreData
 
-class DetailsVC: UIViewController {
+class DetailsVC: UIViewController, UINavigationControllerDelegate {
 
-    var noteToEdit: Note!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var detailsTextView: UITextView!
+    
+    var noteToEdit: Note?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
+        if let topItem = self.navigationController?.navigationBar.topItem {
+            
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        }
+        
+        //for editing a saved item
+        if noteToEdit != nil {
+            
+            loadNoteData()
+        }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func loadNoteData() {
+        
+        if let note = noteToEdit {
+            
+            titleTextField.text = note.title
+            detailsTextView.text = note.details
+        }
     }
-    */
-
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        
+        var note: Note!
+        
+        if noteToEdit == nil {
+            
+            note = Note(context: context)
+        } else {
+            
+            note = noteToEdit
+        }
+        
+        if let title = titleTextField.text {
+            
+            note.title = title
+        }
+        
+        if let details = detailsTextView.text {
+            
+            note.details = details
+        }
+        
+        appDelegate.saveContext()
+        
+        navigationController?.popViewController(animated: true)
+        
+    }
+    
+    @IBAction func deleteButtonPressed(_ sender: Any) {
+        
+        if noteToEdit != nil {
+            
+            context.delete(noteToEdit!)
+            appDelegate.saveContext()
+        }
+        
+        navigationController?.popViewController(animated: true)
+    }
 }
