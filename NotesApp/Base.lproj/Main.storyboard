@@ -42,22 +42,53 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hgH-MM-5EU">
                                 <rect key="frame" x="16" y="68" width="343" height="29"/>
                                 <segments>
-                                    <segment title="First"/>
+                                    <segment title="Newest"/>
                                     <segment title="Title"/>
                                 </segments>
                                 <color key="tintColor" red="0.72340381149999999" green="0.1462985842" blue="0.13690983400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yoy-o0-Q9v">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yoy-o0-Q9v">
                                 <rect key="frame" x="16" y="104" width="343" height="555"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteCell" id="KQn-Kn-26h">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteCell" rowHeight="100" id="KQn-Kn-26h" userLabel="NotesCell" customClass="NotesCell" customModule="NotesApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KQn-Kn-26h" id="1aO-9Z-dZ8">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geL-9d-bND">
+                                                    <rect key="frame" x="16" y="16" width="311" height="23.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="23.5" id="7vF-D6-ktc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details of the Note. Can store various information about anything." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjK-vh-hfD">
+                                                    <rect key="frame" x="16" y="39.5" width="311" height="44"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="qjK-vh-hfD" firstAttribute="top" secondItem="geL-9d-bND" secondAttribute="bottom" id="6WR-c0-eTI"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="geL-9d-bND" secondAttribute="trailing" constant="8" id="ATU-Ff-dUs"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="qjK-vh-hfD" secondAttribute="trailing" constant="8" id="S9V-PF-eA2"/>
+                                                <constraint firstItem="geL-9d-bND" firstAttribute="top" secondItem="1aO-9Z-dZ8" secondAttribute="topMargin" constant="8" id="nnk-S6-cV9"/>
+                                                <constraint firstItem="geL-9d-bND" firstAttribute="leading" secondItem="1aO-9Z-dZ8" secondAttribute="leadingMargin" constant="8" id="vft-5a-zha"/>
+                                                <constraint firstItem="qjK-vh-hfD" firstAttribute="leading" secondItem="1aO-9Z-dZ8" secondAttribute="leadingMargin" constant="8" id="w8R-eZ-jyk"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="qjK-vh-hfD" secondAttribute="bottom" constant="8" id="w9B-dJ-jjA"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" red="0.72340381149999999" green="0.1462985842" blue="0.13690983400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <outlet property="detailsLabel" destination="qjK-vh-hfD" id="09h-hH-P6Z"/>
+                                            <outlet property="titleLabel" destination="geL-9d-bND" id="7XQ-46-iXx"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -77,12 +108,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="segmentedControl" destination="hgH-MM-5EU" id="faV-eP-SlH"/>
+                        <outlet property="tableView" destination="Yoy-o0-Q9v" id="ueQ-8J-vLp"/>
                         <segue destination="rCN-ou-xMa" kind="showDetail" identifier="ShowDetails" id="aku-EP-ZhM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4" y="139"/>
+            <point key="canvasLocation" x="-4" y="138.98050974512745"/>
         </scene>
         <!--DetailsVC-->
         <scene sceneID="ZKp-mW-Jvi">

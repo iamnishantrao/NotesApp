@@ -10,6 +10,8 @@ import UIKit
 
 class DetailsVC: UIViewController {
 
+    var noteToEdit: Note!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
