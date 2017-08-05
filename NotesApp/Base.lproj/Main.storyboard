@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,132 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FXv-Yu-e45">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <color key="backgroundColor" red="0.72340381149999999" green="0.1462985842" blue="0.13690983400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="l2f-x0-fbi"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Notes" id="RYK-IV-Sgq">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="i4i-6s-t0l">
+                                            <color key="tintColor" red="0.72340381149999999" green="0.1462985842" blue="0.13690983400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <connections>
+                                                <segue destination="rCN-ou-xMa" kind="show" identifier="NewNote" id="Xym-5n-iCx"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hgH-MM-5EU">
+                                <rect key="frame" x="16" y="68" width="343" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Title"/>
+                                </segments>
+                                <color key="tintColor" red="0.72340381149999999" green="0.1462985842" blue="0.13690983400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yoy-o0-Q9v">
+                                <rect key="frame" x="16" y="104" width="343" height="555"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteCell" id="KQn-Kn-26h">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KQn-Kn-26h" id="1aO-9Z-dZ8">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Yoy-o0-Q9v" secondAttribute="bottom" constant="8" id="3Bd-Uw-Wjg"/>
+                            <constraint firstItem="Yoy-o0-Q9v" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="GrH-Is-i7s"/>
+                            <constraint firstItem="hgH-MM-5EU" firstAttribute="top" secondItem="FXv-Yu-e45" secondAttribute="bottom" constant="8" id="S05-cK-nqx"/>
+                            <constraint firstItem="FXv-Yu-e45" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ze0-Kt-0bx"/>
+                            <constraint firstItem="hgH-MM-5EU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="d5c-58-lyi"/>
+                            <constraint firstItem="Yoy-o0-Q9v" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ffW-cL-uTJ"/>
+                            <constraint firstItem="FXv-Yu-e45" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="lCO-x2-6P3"/>
+                            <constraint firstAttribute="trailing" secondItem="FXv-Yu-e45" secondAttribute="trailing" id="m6y-qS-cVU"/>
+                            <constraint firstItem="Yoy-o0-Q9v" firstAttribute="top" secondItem="hgH-MM-5EU" secondAttribute="bottom" constant="8" id="peA-CB-hJd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hgH-MM-5EU" secondAttribute="trailing" id="tTR-ME-XpD"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <segue destination="rCN-ou-xMa" kind="showDetail" identifier="ShowDetails" id="aku-EP-ZhM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-4" y="139"/>
+        </scene>
+        <!--DetailsVC-->
+        <scene sceneID="ZKp-mW-Jvi">
+            <objects>
+                <viewController id="rCN-ou-xMa" userLabel="DetailsVC" customClass="DetailsVC" customModule="NotesApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DRa-yE-L4b"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Xp-hQ-Pnb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Oy-z4-Smv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xmg-hX-UnV">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <color key="backgroundColor" red="0.72340381149999999" green="0.1462985842" blue="0.13690983400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="DnU-wz-W5O"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Details" id="k2G-Mu-k4m">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="save" id="706-ln-QWg">
+                                            <color key="tintColor" red="0.72340381149999999" green="0.1462985842" blue="0.13690983400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="Zib-XZ-tPL">
+                                            <color key="tintColor" red="0.72340381149999999" green="0.1462985842" blue="0.13690983400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dsG-dM-m1i">
+                                <rect key="frame" x="16" y="68" width="343" height="30"/>
+                                <color key="tintColor" red="0.72340381149999999" green="0.1462985842" blue="0.13690983400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Enter your note here." translatesAutoresizingMaskIntoConstraints="NO" id="XQi-3p-D7m">
+                                <rect key="frame" x="16" y="116" width="343" height="531"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.72340381149999999" green="0.1462985842" blue="0.13690983400000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dsG-dM-m1i" firstAttribute="top" secondItem="xmg-hX-UnV" secondAttribute="bottom" constant="8" id="5EL-Fu-080"/>
+                            <constraint firstItem="xmg-hX-UnV" firstAttribute="leading" secondItem="1Oy-z4-Smv" secondAttribute="leading" id="KGG-Tl-VCt"/>
+                            <constraint firstAttribute="trailing" secondItem="xmg-hX-UnV" secondAttribute="trailing" id="e0x-MR-nSf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dsG-dM-m1i" secondAttribute="trailing" id="ulR-EL-5Yq"/>
+                            <constraint firstItem="xmg-hX-UnV" firstAttribute="top" secondItem="1Oy-z4-Smv" secondAttribute="top" id="wvX-lV-rgO"/>
+                            <constraint firstItem="dsG-dM-m1i" firstAttribute="leading" secondItem="1Oy-z4-Smv" secondAttribute="leadingMargin" id="yMX-Lt-3UT"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DJG-Xi-pso" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928.79999999999995" y="138.98050974512745"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Xym-5n-iCx"/>
+    </inferredMetricsTieBreakers>
 </document>
