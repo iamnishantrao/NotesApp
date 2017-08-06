@@ -12,8 +12,8 @@ import CoreData
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     //for NSFetchResult with "Note" from where we want to fetch data
     var controller: NSFetchedResultsController<Note>!
     
@@ -23,7 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         
-        generateTestData()
+//        generateTestData()
         attemptFetch()
     }
     
@@ -83,7 +83,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 100.0
+        return 80
         
     }
     
@@ -117,7 +117,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
         controller.delegate = self
-        
+                
         do {
             
             try controller.performFetch()
@@ -129,9 +129,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    // Functions for NSFetchREsultsController.
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
         tableView.beginUpdates()
+        
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        
+        tableView.endUpdates()
         
     }
     
@@ -178,8 +185,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         attemptFetch()
         tableView.reloadData()
+        
     }
-
+    
+    // Function to generate Test Data.
     func generateTestData() {
         
         let note = Note(context: context)

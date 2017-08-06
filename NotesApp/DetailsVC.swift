@@ -18,7 +18,7 @@ class DetailsVC: UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if let topItem = self.navigationController?.navigationBar.topItem {
             
             topItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
@@ -41,7 +41,8 @@ class DetailsVC: UIViewController, UINavigationControllerDelegate {
         }
     }
     
-    @IBAction func saveButtonPressed(_ sender: Any) {
+    // Function to Sava Note.
+    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         
         var note: Note!
         
@@ -66,11 +67,12 @@ class DetailsVC: UIViewController, UINavigationControllerDelegate {
         appDelegate.saveContext()
         
         navigationController?.popViewController(animated: true)
-        
+
     }
     
-    @IBAction func deleteButtonPressed(_ sender: Any) {
-        
+    // Function to Delete Note.
+    @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) {
+                
         if noteToEdit != nil {
             
             context.delete(noteToEdit!)
@@ -79,4 +81,5 @@ class DetailsVC: UIViewController, UINavigationControllerDelegate {
         
         navigationController?.popViewController(animated: true)
     }
+    
 }
