@@ -83,3 +83,26 @@ class DetailsVC: UIViewController, UINavigationControllerDelegate {
     }
     
 }
+
+@available(iOS 11.0, *)
+extension DetailsVC: UITextDragDelegate, UITextDropDelegate {
+    
+    func textDraggableView(_ textDraggableView: UIView, itemsForDrag dragRequest: UITextDragRequest) -> [UIDragItem] {
+        
+        if let string = detailsTextView.text(in: dragRequest.dragRange) {
+            
+            let itemProvider = NSItemProvider(object: string as NSString)
+            return [UIDragItem(itemProvider: itemProvider)]
+            
+        } else {
+            
+            return []
+        }
+        
+    }
+    
+    func textDroppableView(_ textDroppableView: UIView, willPerformDrop drop: UITextDropRequest) {
+        <#code#>
+    }
+    
+}
